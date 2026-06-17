@@ -640,16 +640,30 @@ a { color: inherit; text-decoration: none; }
   padding: 0.625rem 3rem;
 }
 
-.product-breadcrumb-link {
+.breadcrumb-link,
+.breadcrumb-current,
+.breadcrumb-sep {
   font-family: var(--font-mono);
   font-size: 0.875rem;
-  color: var(--muted);
   letter-spacing: 0.02em;
+}
+
+.breadcrumb-link {
+  color: var(--muted);
   text-decoration: none;
   transition: color 0.2s;
 }
 
-.product-breadcrumb-link:hover { color: var(--white); }
+.breadcrumb-link:hover { color: var(--white); }
+
+.breadcrumb-sep {
+  color: var(--muted);
+  margin: 0 0.5rem;
+}
+
+.breadcrumb-current {
+  color: var(--white);
+}
 
 .product-hero-inner {
   display: flex;
@@ -686,12 +700,88 @@ a { color: inherit; text-decoration: none; }
 }
 
 .product-module-img {
-  position: relative;
-  z-index: 1;
   max-height: 30rem;
   width: auto;
   max-width: 100%;
   object-fit: contain;
+  display: block;
+}
+
+/* ─── Product image carousel ─────────────────────────── */
+.product-carousel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 260px;
+}
+
+.product-carousel-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.product-carousel-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.carousel-btn {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: var(--border-w) solid var(--muted);
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.carousel-btn:hover {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+}
+
+.carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.carousel-dot.is-active {
+  background: var(--white);
+  transform: scale(1.4);
 }
 
 .product-hero-right {
@@ -776,16 +866,10 @@ a { color: inherit; text-decoration: none; }
   background: #a11616;
   position: relative;
   overflow: hidden;
-}
-
-.product-photo-col img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  mix-blend-mode: luminosity;
-  opacity: 0.55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36rem;
 }
 
 /* ─── Accordion ──────────────────────────────────────── */
@@ -908,6 +992,112 @@ a { color: inherit; text-decoration: none; }
   font-size: 1.5rem;
   color: var(--white);
 }
+
+/* ─── Module diagram ─────────────────────────────────── */
+.diag-panel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 36rem;
+  padding: 3rem 2rem 5rem;
+}
+
+.module-diagram {
+  width: 160px;
+  height: auto;
+  flex-shrink: 0;
+  filter: drop-shadow(0 8px 40px rgba(0,0,0,0.6));
+}
+
+.diag-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.72);
+  padding: 1.75rem 2.5rem;
+  transform: translateY(100%);
+  transition: transform 0.22s ease;
+  pointer-events: none;
+}
+
+.diag-overlay.is-active {
+  transform: translateY(0);
+}
+
+.diag-overlay-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #FFD102;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.diag-overlay-desc {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+}
+
+.diag-hint-static {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.28);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.diag-overlay.is-active ~ .diag-hint-static {
+  opacity: 0;
+}
+
+/* SVG base styles */
+.dj-panel   { fill: #0a0a0a; stroke: rgba(255,255,255,0.4); stroke-width: 0.5; }
+.dj-rule    { stroke: rgba(255,255,255,0.25); stroke-width: 0.5; }
+.dj-rule-m  { stroke: rgba(255,255,255,0.1);  stroke-width: 0.3; }
+.dj-chevron { fill: rgba(255,255,255,0.4); }
+.dj-hit     { fill: transparent; cursor: pointer; }
+
+.dj-jack       { fill: #1a1a1a; stroke: rgba(255,255,255,0.55); stroke-width: 0.5; }
+.dj-hole       { fill: #000; }
+.dj-knob       { fill: #1a1a1a; stroke: rgba(255,255,255,0.55); stroke-width: 0.5; }
+.dj-knob-inner { fill: #2a2a2a; }
+.dj-tick       { stroke: rgba(255,255,255,0.7); stroke-width: 0.9; stroke-linecap: round; }
+.dj-toggle     { fill: #1a1a1a; stroke: rgba(255,255,255,0.5); stroke-width: 0.5; }
+.dj-thumb      { fill: rgba(255,255,255,0.65); }
+.dj-led        { fill: #a11616; opacity: 0.7; }
+.dj-xfade      { stroke: rgba(255,255,255,0.35); stroke-width: 0.5; }
+.dj-xfade-pos  { fill: rgba(255,255,255,0.6); }
+
+.dj-title { font-family: var(--font-mono); font-size: 5px;   fill: rgba(255,255,255,0.85); text-anchor: middle; dominant-baseline: middle; letter-spacing: 0.4px; }
+.dj-lbl   { font-family: var(--font-mono); font-size: 3.2px; fill: rgba(255,255,255,0.45); text-anchor: middle; }
+.dj-ch    { font-family: var(--font-mono); font-size: 4px;   fill: rgba(255,255,255,0.35); text-anchor: middle; }
+
+/* Zone hover — turns zone yellow */
+.diag-zone { cursor: pointer; }
+
+.diag-zone:hover .dj-jack,
+.diag-zone:hover .dj-knob,
+.diag-zone:hover .dj-toggle  { stroke: #FFD102; stroke-width: 0.9; }
+
+.diag-zone:hover .dj-tick     { stroke: #FFD102; }
+.diag-zone:hover .dj-thumb    { fill: #FFD102; }
+.diag-zone:hover .dj-xfade    { stroke: #FFD102; }
+.diag-zone:hover .dj-xfade-pos { fill: #FFD102; }
+.diag-zone:hover .dj-lbl      { fill: #FFD102; }
+.diag-zone:hover .dj-ch       { fill: rgba(255,209,2,0.6); }
+.diag-zone:hover .dj-knob-inner { fill: rgba(255,209,2,0.12); }
+
 
 /* ─── Responsive ─────────────────────────────────────── */
 @media (max-width: 768px) {

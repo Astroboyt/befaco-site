@@ -4,10 +4,17 @@ import { renderProductResources } from '../sections/ProductResources.js'
 import { renderModuleCard } from '../components/ModuleCard.js'
 import { modules } from '../data/modules.js'
 import { initNav, initHero, initScrollReveal, initPageTransitions } from '../main.js'
+import { initModuleDiagram } from '../components/ModuleDiagram.js'
 
 const morphader = {
   name: 'MORPHADER',
+  category: 'Modulation',
   imgSrc: '/src/assets/modules/morphader.png',
+  images: [
+    '/src/assets/modules/morphader.png',
+    '/src/assets/modules/bandit.png',
+    '/src/assets/modules/oneiroi-card.png',
+  ],
   lifestyleImgSrc: null,
   descFull: `4-channel Voltage Controlled Crossfader with independent CV inputs per channel. Morph between four signal sources with voltage-controlled precision. Each channel includes:<br>
 – Level control<br>
@@ -33,6 +40,7 @@ initNav()
 initHero()
 initScrollReveal()
 initPageTransitions()
+initModuleDiagram()
 
 document.querySelectorAll('.accordion-trigger').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -41,3 +49,23 @@ document.querySelectorAll('.accordion-trigger').forEach(btn => {
     btn.nextElementSibling.classList.toggle('is-open', !isOpen)
   })
 })
+
+// Carousel
+function initCarousel() {
+  const track = document.querySelector('.product-carousel-track')
+  const dots  = [...document.querySelectorAll('.carousel-dot')]
+  if (!track || !dots.length) return
+  let idx = 0
+
+  function goTo(n) {
+    idx = (n + dots.length) % dots.length
+    track.style.transform = `translateX(-${idx * 100}%)`
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === idx))
+  }
+
+  document.getElementById('carousel-prev')?.addEventListener('click', () => goTo(idx - 1))
+  document.getElementById('carousel-next')?.addEventListener('click', () => goTo(idx + 1))
+  dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)))
+}
+
+initCarousel()
