@@ -8,7 +8,7 @@ export const modules = [
     ctaStyle: 'btn',
     ctaLabel: 'Discover BANDIT',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'popular',
     imgSrc: '/src/assets/modules/bandit.png',
   },
   {
@@ -20,7 +20,7 @@ export const modules = [
     ctaStyle: 'arrow',
     ctaLabel: 'View Punch',
     ctaHref: '/modules.html',
-    isNew: true,
+    tag: 'new',
     imgSrc: '/src/assets/modules/oneiroi-card.png',
   },
   {
@@ -32,7 +32,7 @@ export const modules = [
     ctaStyle: 'arrow',
     ctaLabel: 'Explore MORPHADER',
     ctaHref: '/product.html',
-    isNew: false,
+    tag: 'popular',
     imgSrc: '/src/assets/modules/morphader.png',
   },
   {
@@ -44,7 +44,7 @@ export const modules = [
     ctaStyle: 'btn',
     ctaLabel: 'Discover JOYSTICK',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'legacy',
     imgSrc: '/src/assets/modules/joystick.png',
   },
   {
@@ -56,7 +56,7 @@ export const modules = [
     ctaStyle: 'arrow',
     ctaLabel: 'View Punch',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'hot',
     imgSrc: '/src/assets/modules/burst.png',
   },
   {
@@ -68,7 +68,7 @@ export const modules = [
     ctaStyle: 'arrow',
     ctaLabel: 'Explore MORPHADER',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'bestseller',
     imgSrc: '/src/assets/modules/chopping-kinky.png',
   },
   {
@@ -80,7 +80,7 @@ export const modules = [
     ctaStyle: 'btn',
     ctaLabel: 'Discover JOYSTICK',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'legacy',
     imgSrc: '/src/assets/modules/joystick.png',
   },
   {
@@ -92,7 +92,7 @@ export const modules = [
     ctaStyle: 'arrow',
     ctaLabel: 'View Particles',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'bestseller',
     imgSrc: '/src/assets/modules/burst.png',
   },
   {
@@ -104,7 +104,7 @@ export const modules = [
     ctaStyle: 'arrow',
     ctaLabel: 'View Ephemere',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'hot',
     imgSrc: '/src/assets/modules/chopping-kinky.png',
   },
   {
@@ -116,7 +116,7 @@ export const modules = [
     ctaStyle: 'btn',
     ctaLabel: 'Discover BANDIT',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'hot',
     imgSrc: '/src/assets/modules/bandit.png',
   },
   {
@@ -128,7 +128,7 @@ export const modules = [
     ctaStyle: 'arrow',
     ctaLabel: 'Explore MORPHADER',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'bestseller',
     imgSrc: '/src/assets/modules/morphader.png',
   },
   {
@@ -140,7 +140,7 @@ export const modules = [
     ctaStyle: 'arrow',
     ctaLabel: 'View Punch',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'new',
     imgSrc: '/src/assets/modules/oneiroi-card.png',
   },
   {
@@ -152,7 +152,7 @@ export const modules = [
     ctaStyle: 'btn',
     ctaLabel: 'Discover JOYSTICK',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'new',
     imgSrc: '/src/assets/modules/joystick.png',
   },
   {
@@ -164,7 +164,7 @@ export const modules = [
     ctaStyle: 'arrow',
     ctaLabel: 'View Particles',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'bestseller',
     imgSrc: '/src/assets/modules/burst.png',
   },
   {
@@ -176,7 +176,7 @@ export const modules = [
     ctaStyle: 'arrow',
     ctaLabel: 'View Ephemere',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'legacy',
     imgSrc: '/src/assets/modules/chopping-kinky.png',
   },
   {
@@ -188,7 +188,7 @@ export const modules = [
     ctaStyle: 'arrow',
     ctaLabel: 'Explore MORPHADER',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'popular',
     imgSrc: '/src/assets/modules/morphader.png',
   },
   {
@@ -200,7 +200,7 @@ export const modules = [
     ctaStyle: 'btn',
     ctaLabel: 'Discover BANDIT',
     ctaHref: '/modules.html',
-    isNew: false,
+    tag: 'popular',
     imgSrc: '/src/assets/modules/bandit.png',
   },
 ]
