@@ -29,6 +29,52 @@ export function initNav() {
   }, { passive: true })
 
   gsap.from(nav, { y: -8, opacity: 0, duration: 0.6, ease: 'power2.out', delay: 0.2 })
+
+  // Generic toggle helper
+  function initToggle(btnId, panelId) {
+    const btn   = document.getElementById(btnId)
+    const panel = document.getElementById(panelId)
+    if (!btn || !panel) return
+    btn.addEventListener('click', e => {
+      e.stopPropagation()
+      const open = btn.getAttribute('aria-expanded') === 'true'
+      // Close all other panels first
+      document.querySelectorAll('[data-nav-panel]').forEach(p => p.classList.remove('is-open'))
+      document.querySelectorAll('[data-nav-toggle]').forEach(b => b.setAttribute('aria-expanded', 'false'))
+      if (!open) {
+        btn.setAttribute('aria-expanded', 'true')
+        panel.classList.add('is-open')
+      }
+    })
+    btn.setAttribute('data-nav-toggle', '')
+    panel.setAttribute('data-nav-panel', '')
+    panel.addEventListener('click', e => e.stopPropagation())
+  }
+
+  initToggle('nav-shop-btn', 'nav-shop-panel')
+  initToggle('nav-resources-btn', 'nav-resources-panel')
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('[data-nav-panel]').forEach(p => p.classList.remove('is-open'))
+    document.querySelectorAll('[data-nav-toggle]').forEach(b => b.setAttribute('aria-expanded', 'false'))
+  })
+
+  // Search bar
+  const searchBtn   = document.getElementById('nav-search-btn')
+  const searchBar   = document.getElementById('nav-search-bar')
+  const searchInput = document.getElementById('nav-search-input')
+  const searchClose = document.getElementById('nav-search-close')
+  if (searchBtn && searchBar) {
+    searchBtn.addEventListener('click', e => {
+      e.stopPropagation()
+      searchBar.classList.toggle('is-open')
+      if (searchBar.classList.contains('is-open')) searchInput?.focus()
+    })
+    searchClose?.addEventListener('click', () => searchBar.classList.remove('is-open'))
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') searchBar.classList.remove('is-open')
+    })
+  }
 }
 
 // ── Crosshair cursor
