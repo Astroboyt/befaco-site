@@ -10,7 +10,7 @@ const FILTERS = [
   { key: 'si',         label: 'SI' },
 ]
 
-const STATUS_FILTERS = [
+export const STATUS_FILTERS = [
   { key: 'all',        label: 'ALL' },
   { key: 'new',        label: 'NEW' },
   { key: 'popular',    label: 'POPULAR' },
@@ -18,6 +18,8 @@ const STATUS_FILTERS = [
   { key: 'legacy',     label: 'LEGACY' },
   { key: 'bestseller', label: 'BESTSELLER' },
 ]
+
+const CHEVRON = `<svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>`
 
 export function borderClasses(index) {
   const col = index % 3
@@ -34,8 +36,8 @@ export function renderModuleCatalog(modules) {
     return `${sep}<button class="filter-tab${i === 0 ? ' active' : ''}" data-filter="${f.key}">${f.label}</button>`
   }).join('')
 
-  const statusTabs = STATUS_FILTERS.map((f, i) =>
-    `<button class="status-tab${i === 0 ? ' active' : ''}" data-status="${f.key}">${f.label}</button>`
+  const dropdownItems = STATUS_FILTERS.map(f =>
+    `<button class="status-option${f.key === 'all' ? ' active' : ''}" data-status="${f.key}">${f.label}</button>`
   ).join('')
 
   const cards = modules.map((m, i) => renderModuleCard(m, borderClasses(i))).join('')
@@ -43,12 +45,19 @@ export function renderModuleCatalog(modules) {
   return `
     <section id="modules" class="border-b border-b-border" style="padding-top:var(--nav-h);">
 
-      <div class="filter-bar flex items-center justify-center gap-6 md:gap-8 px-6 md:px-8 py-4 border-b border-b-border overflow-x-auto" style="scrollbar-width:none;">
-        ${tabs}
-      </div>
-
-      <div class="status-bar">
-        ${statusTabs}
+      <div class="filter-bar border-b border-b-border" style="scrollbar-width:none;">
+        <div class="filter-tabs">
+          ${tabs}
+        </div>
+        <div class="filter-dropdown-wrap">
+          <button class="filter-dropdown-btn" id="filter-dropdown-btn" aria-expanded="false">
+            <span id="filter-dropdown-label">FILTER</span>
+            ${CHEVRON}
+          </button>
+          <div class="filter-dropdown-panel" id="filter-dropdown-panel">
+            ${dropdownItems}
+          </div>
+        </div>
       </div>
 
       <div id="modules-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">

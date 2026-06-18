@@ -293,6 +293,20 @@ a { color: inherit; text-decoration: none; }
   top: var(--nav-h);
   z-index: 50;
   background: var(--black);
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.filter-tabs {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
 .filter-tab {
@@ -311,44 +325,82 @@ a { color: inherit; text-decoration: none; }
 .filter-tab:hover { color: var(--white); }
 .filter-tab.active { color: var(--yellow); border-bottom-color: var(--yellow); }
 
-.status-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.65rem 2rem;
-  border-bottom: var(--border-w) solid var(--border);
-  overflow-x: auto;
-  scrollbar-width: none;
-  flex-wrap: wrap;
-  position: sticky;
-  top: calc(var(--nav-h) + 3.5rem);
-  z-index: 49;
-  background: var(--black);
+/* ─── Filter dropdown ────────────────────────────────── */
+.filter-dropdown-wrap {
+  position: relative;
+  flex-shrink: 0;
 }
 
-.status-tab {
+.filter-dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   letter-spacing: 0.12em;
   color: var(--muted);
   background: none;
-  border: var(--border-w) solid transparent;
-  padding: 0.3rem 0.8rem;
+  border: var(--border-w) solid var(--border);
+  padding: 0.4rem 0.85rem;
   cursor: pointer;
   transition: color 0.2s, border-color 0.2s;
   white-space: nowrap;
 }
 
-.status-tab:hover {
+.filter-dropdown-btn:hover,
+.filter-dropdown-btn[aria-expanded="true"] {
   color: var(--white);
-  border-color: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.35);
 }
 
-.status-tab.active {
+.filter-dropdown-btn.has-active {
   color: #FFD102;
   border-color: #FFD102;
 }
+
+.filter-dropdown-btn svg {
+  transition: transform 0.2s;
+}
+
+.filter-dropdown-btn[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.filter-dropdown-panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: #111;
+  border: var(--border-w) solid var(--border);
+  min-width: 160px;
+  display: none;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.filter-dropdown-panel.is-open {
+  display: flex;
+}
+
+.status-option {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+  border-bottom: var(--border-w) solid var(--border);
+}
+
+.status-option:last-child { border-bottom: none; }
+
+.status-option:hover { color: var(--white); background: rgba(255,255,255,0.04); }
+
+.status-option.active { color: #FFD102; }
 
 /* ─── Module card badge ──────────────────────────────── */
 .module-badge {
