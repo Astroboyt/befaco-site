@@ -3,7 +3,7 @@ const ARROW_SVG = `<svg width="16" height="16" viewBox="0 0 12 12" fill="none"><
 export function renderHero({
   name    = 'ONEIROI',
   tagline = 'A complete synth voice in a single module. Experimental, self-contained. Built for textures, drones, and evolving soundscapes.',
-  imgSrc  = '/src/assets/modules/oneiroi-hero.png',
+  imgSrc  = '/assets/modules/oneiroi-hero.png',
 } = {}) {
   return `
     <section id="hero" class="relative overflow-hidden border-b border-b-border" style="min-height:100vh;">
@@ -28,7 +28,7 @@ export function renderHero({
       </div>
 
       <!-- Module image -->
-      <div class="absolute inset-0 flex items-center justify-center" style="margin-top: var(--nav-h); padding-bottom: 10rem;">
+      <div id="hero-module-wrap" class="absolute inset-0 flex items-center justify-center" style="margin-top: var(--nav-h); padding-bottom: 10rem;">
         <img
           src="${imgSrc}"
           alt="${name}"
@@ -44,7 +44,7 @@ export function renderHero({
       </div>
 
       <!-- Bottom info row: name | tagline | {EXPLORE} -->
-      <div class="absolute left-0 right-0" style="bottom: calc(9rem - 58px); padding: 0 3rem 0 clamp(3rem, 25vw, 28rem);">
+      <div id="hero-info" class="absolute left-0 right-0" style="bottom: calc(9rem - 58px); padding: 0 3rem 0 clamp(3rem, 25vw, 28rem);">
         <div style="display:flex; align-items:center; gap: 3.625rem;">
 
           <p style="
@@ -83,7 +83,7 @@ export function renderHero({
       </div>
 
       <!-- Write to Us — absolute bottom-right corner -->
-      <a href="mailto:hello@befaco.org" style="
+      <a id="hero-write-us" href="mailto:hello@befaco.org" style="
         position: absolute;
         bottom: 3rem;
         right: 3rem;

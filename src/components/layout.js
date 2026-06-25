@@ -7,7 +7,7 @@ export const NAV_HTML = `
 
 <nav id="site-nav">
   <a href="/index.html" class="nav-logo">
-    <img src="/src/assets/logos/befaco-nav.svg" alt="Befaco" style="width:259px;height:46px;display:block;" />
+    <img src="/assets/logos/befaco-nav.svg" alt="Befaco" style="width:259px;height:46px;display:block;" />
   </a>
   <div class="nav-links">
 
@@ -33,7 +33,26 @@ export const NAV_HTML = `
 
     <button class="nav-search-btn" id="nav-search-btn" aria-label="Search">${SEARCH_SVG}</button>
   </div>
+
+  <a href="https://shop.befaco.org" target="_blank" rel="noopener" class="nav-store">
+    <img src="/assets/logos/store-logo.png" alt="Befaco Shop" class="nav-store-logo" />
+    <span class="nav-store-label">Visit Store</span>
+  </a>
+
+  <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/modules.html" class="nav-mobile-link">Shop</a>
+  <a href="#" class="nav-mobile-link">Resources</a>
+  <a href="/community.html" class="nav-mobile-link">Community</a>
+  <div class="nav-mobile-divider"></div>
+  <a href="https://shop.befaco.org" target="_blank" rel="noopener" class="nav-mobile-link nav-mobile-link--dim">Visit Store ↗</a>
+</div>
 
 <div class="nav-mega-panel" id="nav-shop-panel">
   <div class="nav-mega-col">
@@ -83,7 +102,7 @@ export const FOOTER_HTML = `
   <div class="footer-main">
 
     <div class="footer-address">
-      <img src="/src/assets/logos/befaco-nav.svg" alt="Befaco" style="width:259px;height:46px;display:block;" />
+      <img src="/assets/logos/befaco-nav.svg" alt="Befaco" style="width:259px;height:46px;display:block;" />
       <p class="footer-city">CALLE DE PERU 98</p>
     </div>
 
@@ -116,8 +135,8 @@ export const FOOTER_HTML = `
     </div>
 
     <div class="footer-logos">
-      <img src="/src/assets/logos/befaco-logo.png" alt="Ajuntament de Barcelona" style="height:103px;object-fit:contain;" />
-      <img src="/src/assets/logos/hangar-logo.png" alt="Hangar.org" style="height:72px;object-fit:contain;" />
+      <img src="/assets/logos/befaco-logo.png" alt="Ajuntament de Barcelona" style="height:103px;object-fit:contain;" />
+      <img src="/assets/logos/hangar-logo.png" alt="Hangar.org" style="height:72px;object-fit:contain;" />
     </div>
 
   </div>

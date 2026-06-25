@@ -59,6 +59,23 @@ export function initNav() {
     document.querySelectorAll('[data-nav-toggle]').forEach(b => b.setAttribute('aria-expanded', 'false'))
   })
 
+  // Mobile hamburger
+  const hamburger  = document.getElementById('nav-hamburger')
+  const mobileMenu = document.getElementById('nav-mobile-menu')
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', e => {
+      e.stopPropagation()
+      const isOpen = hamburger.getAttribute('aria-expanded') === 'true'
+      hamburger.setAttribute('aria-expanded', String(!isOpen))
+      mobileMenu.classList.toggle('is-open', !isOpen)
+    })
+    document.addEventListener('click', () => {
+      hamburger.setAttribute('aria-expanded', 'false')
+      mobileMenu.classList.remove('is-open')
+    })
+    mobileMenu.addEventListener('click', e => e.stopPropagation())
+  }
+
   // Search bar
   const searchBtn   = document.getElementById('nav-search-btn')
   const searchBar   = document.getElementById('nav-search-bar')
